@@ -14,6 +14,7 @@ class GameViewController: UIViewController
     //mostly boilerplate code that creates the Sprite Kit scene and presents it in the SKView
     
     var scene: GameScene!
+    var level: Level!
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -39,6 +40,9 @@ class GameViewController: UIViewController
         scene = GameScene(size: skView.bounds.size)
         scene.scaleMode = .aspectFill
         
+        level = Level()
+        scene.level = level
+        
         // Present the scene
         skView.presentScene(scene)
         
@@ -47,5 +51,18 @@ class GameViewController: UIViewController
         skView.showsFPS = true
         skView.showsNodeCount = true
         //=============================
+        
+        beginGame()
+    }
+    
+    func beginGame()
+    {
+        shuffle()
+    }
+    
+    func shuffle()
+    {
+        let newCookies = level.shuffle()
+        scene.addSprites(for: newCookies)
     }
 }

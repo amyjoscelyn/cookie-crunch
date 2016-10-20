@@ -38,15 +38,20 @@ enum CookieType: Int, CustomStringConvertible
     }
 }
 
-class Cookie: CustomStringConvertible
+class Cookie: CustomStringConvertible, Hashable, Equatable
 {
     var column: Int
     var row: Int
-    let cookieType = CookieType
+    let cookieType: CookieType
     var sprite: SKSpriteNode?
     
     var description: String {
         return "type:\(cookieType) square:(\(column),\(row))"
+    }
+    
+    //required property when conforming to Hashable
+    var hashValue: Int {
+        return row * 10 + column
     }
     
     init(column: Int, row: Int, cookieType: CookieType)
@@ -55,4 +60,10 @@ class Cookie: CustomStringConvertible
         self.row = row
         self.cookieType = cookieType
     }
+}
+
+//also required, to supply the == comparison operator for comparing two objects of the same type
+func ==(lhs: Cookie, rhs: Cookie) -> Bool
+{
+    return lhs.column == rhs.column && lhs.row == rhs.row
 }
