@@ -14,6 +14,7 @@
 		3DD35EC61DB920C5001FDC57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DD35EC51DB920C5001FDC57 /* Assets.xcassets */; };
 		3DD35EC91DB920C5001FDC57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DD35EC71DB920C5001FDC57 /* LaunchScreen.storyboard */; };
 		3DD35ED11DB920F6001FDC57 /* Sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3DD35ED01DB920F6001FDC57 /* Sprites.atlas */; };
+		3DD35ED31DB924D9001FDC57 /* Cookie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD35ED21DB924D9001FDC57 /* Cookie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		3DD35EC81DB920C5001FDC57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3DD35ECA1DB920C5001FDC57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DD35ED01DB920F6001FDC57 /* Sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Sprites.atlas; sourceTree = "<group>"; };
+		3DD35ED21DB924D9001FDC57 /* Cookie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cookie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				3DD35EB81DB920C5001FDC57 /* AppDelegate.swift */,
 				3DD35EBE1DB920C5001FDC57 /* GameScene.swift */,
 				3DD35EC01DB920C5001FDC57 /* GameViewController.swift */,
+				3DD35ED21DB924D9001FDC57 /* Cookie.swift */,
 				3DD35EC21DB920C5001FDC57 /* Main.storyboard */,
 				3DD35EC51DB920C5001FDC57 /* Assets.xcassets */,
 				3DD35ED01DB920F6001FDC57 /* Sprites.atlas */,
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DD35EBF1DB920C5001FDC57 /* GameScene.swift in Sources */,
+				3DD35ED31DB924D9001FDC57 /* Cookie.swift in Sources */,
 				3DD35EC11DB920C5001FDC57 /* GameViewController.swift in Sources */,
 				3DD35EB91DB920C5001FDC57 /* AppDelegate.swift in Sources */,
 			);

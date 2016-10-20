@@ -41,5 +41,11 @@ class GameViewController: UIViewController
         
         // Present the scene
         skView.presentScene(scene)
+        
+        //FOR TESTING PURPOSES=========
+//        skView.showsPhysics = true
+        skView.showsFPS = true
+        skView.showsNodeCount = true
+        //=============================
     }
 }
