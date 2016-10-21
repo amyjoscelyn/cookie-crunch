@@ -27,6 +27,7 @@
 		3DDDCF691DBA6F4C00D7700F /* Level_5.json in Resources */ = {isa = PBXBuildFile; fileRef = 3DDDCF681DBA6F4C00D7700F /* Level_5.json */; };
 		3DDDCF6C1DBA700D00D7700F /* Level_6.json in Resources */ = {isa = PBXBuildFile; fileRef = 3DDDCF6A1DBA700D00D7700F /* Level_6.json */; };
 		3DDDCF6D1DBA700D00D7700F /* Level_7.json in Resources */ = {isa = PBXBuildFile; fileRef = 3DDDCF6B1DBA700D00D7700F /* Level_7.json */; };
+		3DDDCF6F1DBA832C00D7700F /* Swap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDDCF6E1DBA832C00D7700F /* Swap.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		3DDDCF681DBA6F4C00D7700F /* Level_5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_5.json; sourceTree = "<group>"; };
 		3DDDCF6A1DBA700D00D7700F /* Level_6.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_6.json; sourceTree = "<group>"; };
 		3DDDCF6B1DBA700D00D7700F /* Level_7.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_7.json; sourceTree = "<group>"; };
+		3DDDCF6E1DBA832C00D7700F /* Swap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,9 +90,10 @@
 				3DD35EBE1DB920C5001FDC57 /* GameScene.swift */,
 				3DD35EC01DB920C5001FDC57 /* GameViewController.swift */,
 				3DD35ED21DB924D9001FDC57 /* Cookie.swift */,
+				3DD35EDC1DB97593001FDC57 /* Tile.swift */,
+				3DDDCF6E1DBA832C00D7700F /* Swap.swift */,
 				3DD35ED41DB93B9F001FDC57 /* Array2D.swift */,
 				3DD35ED61DB9432A001FDC57 /* Level.swift */,
-				3DD35EDC1DB97593001FDC57 /* Tile.swift */,
 				3DD35EDE1DB97678001FDC57 /* Extensions.swift */,
 				3DD35EC21DB920C5001FDC57 /* Main.storyboard */,
 				3DD35EC51DB920C5001FDC57 /* Assets.xcassets */,
@@ -199,6 +202,7 @@
 				3DD35EC11DB920C5001FDC57 /* GameViewController.swift in Sources */,
 				3DD35EB91DB920C5001FDC57 /* AppDelegate.swift in Sources */,
 				3DD35ED51DB93B9F001FDC57 /* Array2D.swift in Sources */,
+				3DDDCF6F1DBA832C00D7700F /* Swap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

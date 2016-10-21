@@ -44,6 +44,8 @@ class GameViewController: UIViewController
         scene.level = level
         scene.addTiles()
         
+        scene.swipeHandler = handleSwipe
+        
         // Present the scene
         skView.presentScene(scene)
         
@@ -65,5 +67,23 @@ class GameViewController: UIViewController
     {
         let newCookies = level.shuffle()
         scene.addSprites(for: newCookies)
+    }
+    
+    func handleSwipe(swap: Swap)
+    {
+        view.isUserInteractionEnabled = false
+        
+        level.performSwap(swap: swap)
+        
+        scene.animate(swap)
+        {
+            self.view.isUserInteractionEnabled = true
+        }
+        /*
+         Note: The above uses so-called trailing closure syntax, where the closure is written behind the function call. An alternative way to write it is as follows:
+         scene.animate(swap, completion: {
+         self.view.isUserInteractionEnabled = true
+         })
+         */
     }
 }
