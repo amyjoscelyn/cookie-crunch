@@ -24,6 +24,7 @@ class GameScene: SKScene
     
     private var swipeFromColumn: Int?
     private var swipeFromRow: Int?
+    var selectionSprite = SKSpriteNode() //private?
     
     required init?(coder aDecoder: NSCoder)
     {
@@ -121,6 +122,8 @@ class GameScene: SKScene
             {
                 swipeFromColumn = column
                 swipeFromRow = row
+                
+                showSelectionIndicatorForCookie(cookie: cookie)
             }
         }
     }
@@ -157,6 +160,7 @@ class GameScene: SKScene
             {
                 trySwap(horizontal: horzDelta, vertical: vertDelta)
                 
+                hideSelectionIndicator()
                 swipeFromColumn = nil
             }
         }
@@ -164,6 +168,11 @@ class GameScene: SKScene
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
     {
+        if selectionSprite.parent != nil && swipeFromColumn != nil
+        {
+            hideSelectionIndicator()
+        }
+        
         swipeFromColumn = nil
         swipeFromRow = nil
     }
@@ -209,5 +218,31 @@ class GameScene: SKScene
         let moveB = SKAction.move(to: spriteA.position, duration: duration)
         moveB.timingMode = .easeOut
         spriteB.run(moveB)
+    }
+    
+    func showSelectionIndicatorForCookie(cookie: Cookie)
+    {
+        if selectionSprite.parent != nil
+        {
+            selectionSprite.removeFromParent()
+        }
+        
+        if let sprite = cookie.sprite
+        {
+            let texture = SKTexture(imageNamed: cookie.cookieType.highlightedSpriteName)
+            selectionSprite.size = CGSize.init(width: TileWidth, height: TileHeight)
+            selectionSprite.run(SKAction.setTexture(texture))
+            
+            sprite.addChild(selectionSprite)
+            selectionSprite.alpha = 1.0
+        }
+    }
+    
+    func hideSelectionIndicator()
+    {
+        selectionSprite.run(SKAction.sequence([
+            SKAction.fadeOut(withDuration: 0.3),
+            SKAction.removeFromParent()]
+        ))
     }
 }
