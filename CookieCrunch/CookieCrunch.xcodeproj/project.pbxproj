@@ -24,6 +24,9 @@
 		3DD35EF81DB9B97C001FDC57 /* Level_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 3DD35EF31DB9B97C001FDC57 /* Level_2.json */; };
 		3DD35EF91DB9B97C001FDC57 /* Level_3.json in Resources */ = {isa = PBXBuildFile; fileRef = 3DD35EF41DB9B97C001FDC57 /* Level_3.json */; };
 		3DD35EFA1DB9B97C001FDC57 /* Level_4.json in Resources */ = {isa = PBXBuildFile; fileRef = 3DD35EF51DB9B97C001FDC57 /* Level_4.json */; };
+		3DDDCF691DBA6F4C00D7700F /* Level_5.json in Resources */ = {isa = PBXBuildFile; fileRef = 3DDDCF681DBA6F4C00D7700F /* Level_5.json */; };
+		3DDDCF6C1DBA700D00D7700F /* Level_6.json in Resources */ = {isa = PBXBuildFile; fileRef = 3DDDCF6A1DBA700D00D7700F /* Level_6.json */; };
+		3DDDCF6D1DBA700D00D7700F /* Level_7.json in Resources */ = {isa = PBXBuildFile; fileRef = 3DDDCF6B1DBA700D00D7700F /* Level_7.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		3DD35EF31DB9B97C001FDC57 /* Level_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_2.json; sourceTree = "<group>"; };
 		3DD35EF41DB9B97C001FDC57 /* Level_3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_3.json; sourceTree = "<group>"; };
 		3DD35EF51DB9B97C001FDC57 /* Level_4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_4.json; sourceTree = "<group>"; };
+		3DDDCF681DBA6F4C00D7700F /* Level_5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_5.json; sourceTree = "<group>"; };
+		3DDDCF6A1DBA700D00D7700F /* Level_6.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_6.json; sourceTree = "<group>"; };
+		3DDDCF6B1DBA700D00D7700F /* Level_7.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_7.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +99,9 @@
 				3DD35EF31DB9B97C001FDC57 /* Level_2.json */,
 				3DD35EF41DB9B97C001FDC57 /* Level_3.json */,
 				3DD35EF51DB9B97C001FDC57 /* Level_4.json */,
+				3DDDCF681DBA6F4C00D7700F /* Level_5.json */,
+				3DDDCF6A1DBA700D00D7700F /* Level_6.json */,
+				3DDDCF6B1DBA700D00D7700F /* Level_7.json */,
 				3DD35ED01DB920F6001FDC57 /* Sprites.atlas */,
 				3DD35EC71DB920C5001FDC57 /* LaunchScreen.storyboard */,
 				3DD35ECA1DB920C5001FDC57 /* Info.plist */,
@@ -166,8 +175,11 @@
 				3DD35EF61DB9B97C001FDC57 /* Level_0.json in Resources */,
 				3DD35EC41DB920C5001FDC57 /* Main.storyboard in Resources */,
 				3DD35EC61DB920C5001FDC57 /* Assets.xcassets in Resources */,
+				3DDDCF691DBA6F4C00D7700F /* Level_5.json in Resources */,
+				3DDDCF6C1DBA700D00D7700F /* Level_6.json in Resources */,
 				3DD35EF71DB9B97C001FDC57 /* Level_1.json in Resources */,
 				3DD35EF91DB9B97C001FDC57 /* Level_3.json in Resources */,
+				3DDDCF6D1DBA700D00D7700F /* Level_7.json in Resources */,
 				3DD35EC91DB920C5001FDC57 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,6 +362,7 @@
 				3DD35ECF1DB920C5001FDC57 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

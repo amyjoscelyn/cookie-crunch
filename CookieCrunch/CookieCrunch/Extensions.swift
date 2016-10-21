@@ -44,7 +44,6 @@ extension Dictionary
                 return nil
             }
         }
-        print("DictionaryOK count::::::::::\(dictionaryOK.count)")
         return dictionaryOK as? Dictionary<String, AnyObject>
     }
 }

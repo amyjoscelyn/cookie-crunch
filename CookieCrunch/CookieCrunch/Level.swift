@@ -38,18 +38,12 @@ class Level
             {
                 if tiles[column, row] != nil
                 {
-                    print("TILES ARE NOT NIL!!!!!!!!")
-                    
                     let cookieType = CookieType.random()
                     
                     let cookie = Cookie(column: column, row: row, cookieType: cookieType)
                     cookies[column, row] = cookie
                     
                     set.insert(cookie)
-                }
-                else
-                {
-                    print("(\(column), \(row)) TILES ARE NILLLLLLLLL: \(tiles[column, row])")
                 }
             }
         }
@@ -68,20 +62,10 @@ class Level
     init(filename: String)
     {
         guard let dictionary = Dictionary<String, AnyObject>.loadJSONFromBundle(filename: filename)
-            else
-        {
-            print("=============== dictionary did not load")
-            return
-        }
-        
-        print("~~~~~~~~~~~~~~ dictionary tiles: \(dictionary)")
+            else { return }
         
         guard let tilesArray = dictionary["tiles"] as? [[Int]]
-            else
-        {
-            print("+++++++++++++++ tiles from dictionary did not load")
-            return
-        }
+            else { return }
         
         for (row, rowArray) in tilesArray.enumerated()
         {
