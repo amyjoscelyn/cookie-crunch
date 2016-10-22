@@ -76,16 +76,7 @@ class GameViewController: UIViewController
         if level.isPossibleSwap(swap)
         {
             level.performSwap(swap: swap)
-            scene.animate(swap)
-            {
-                self.view.isUserInteractionEnabled = true
-            }
-            /*
-             Note: The above uses so-called trailing closure syntax, where the closure is written behind the function call. An alternative way to write it is as follows:
-             scene.animate(swap, completion: {
-             self.view.isUserInteractionEnabled = true
-             })
-             */
+            scene.animate(swap, completion: handleMatches)
         }
         else
         {
@@ -93,6 +84,23 @@ class GameViewController: UIViewController
             {
                 self.view.isUserInteractionEnabled = true
             }
+            
+            /*
+             Note: The above uses so-called trailing closure syntax, where the closure is written behind the function call. An alternative way to write it is as follows:
+             scene.animate(swap, completion: {
+             self.view.isUserInteractionEnabled = true
+             })
+             */
+        }
+    }
+    
+    func handleMatches()
+    {
+        let chains = level.removeMatches()
+        
+        scene.animateMatchedCookies(for: chains)
+        {
+            self.view.isUserInteractionEnabled = true
         }
     }
 }
