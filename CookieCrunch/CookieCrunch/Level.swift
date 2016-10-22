@@ -14,6 +14,7 @@ let NumRows = 9
 class Level
 {
     fileprivate var cookies = Array2D<Cookie>(columns: NumColumns, rows: NumRows)
+    private var possibleSwaps = Set<Swap>()
 
     func cookieAt(column: Int, row: Int) -> Cookie?
     {
@@ -25,7 +26,15 @@ class Level
     
     func shuffle() -> Set<Cookie>
     {
-        return createInitialCookies()
+        var set: Set<Cookie>
+        repeat
+        {
+            set = createInitialCookies()
+            detectPossibleSwaps()
+            print("possible swaps: \(possibleSwaps)")
+        } while possibleSwaps.count == 0
+        
+        return set
     }
     
     private func createInitialCookies() -> Set<Cookie>
@@ -57,6 +66,51 @@ class Level
             }
         }
         return set
+    }
+    
+    private func hasChainAt(column: Int, row: Int) -> Bool
+    {
+        let cookieType = cookies[column, row]!.cookieType
+        
+        // Horizontal Chain Check
+        var horzLength = 1
+        
+        // Left
+        var i = column - 1
+        while i >= 0 && cookies[i, row]?.cookieType == cookieType
+        {
+            i -= 1
+            horzLength += 1
+        }
+        
+        // Right
+        i = column + 1
+        while i < NumColumns && cookies[i, row]?.cookieType == cookieType
+        {
+            i += 1
+            horzLength += 1
+        }
+        if horzLength >= 3 { return true }
+        
+        // Vertical Chain Check
+        var vertLength = 1
+        
+        // Down
+        i = row - 1
+        while i >= 0 && cookies[column, i]?.cookieType == cookieType
+        {
+            i -= 1
+            vertLength += 1
+        }
+        
+        // Up
+        i = row + 1
+        while i < NumRows && cookies[column, i]?.cookieType == cookieType
+        {
+            i += 1
+            vertLength += 1
+        }
+        return vertLength >= 3
     }
     
     private var tiles = Array2D<Tile>(columns: NumColumns, rows: NumRows)
@@ -104,5 +158,62 @@ class Level
         cookies[columnB, rowB] = swap.cookieA
         swap.cookieA.column = columnB
         swap.cookieA.row = rowB
+    }
+    
+    func detectPossibleSwaps()
+    {
+        var set = Set<Swap>()
+        
+        for row in 0..<NumRows
+        {
+            for column in 0..<NumColumns
+            {
+                if let cookie = cookies[column, row]
+                {
+                    // Is it possible to swap this cookie with the one on its right?
+                    if column < NumColumns - 1
+                    {
+                        // Have a cookie in this spot?  No tile, no cookie.
+                        if let other = cookies[column + 1, row]
+                        {
+                            // Swap them
+                            cookies[column, row] = other
+                            cookies[column + 1, row] = cookie
+                            
+                            // Is either cookie now part of a chain?
+                            if hasChainAt(column: column + 1, row: row) || hasChainAt(column: column, row: row)
+                            {
+                                set.insert(Swap(cookieA: cookie, cookieB: other))
+                            }
+                            
+                            // Swap them back
+                            cookies[column, row] = cookie
+                            cookies[column + 1, row] = other
+                        }
+                    }
+                    
+                    if row < NumRows - 1
+                    {
+                        if let other = cookies[column, row + 1]
+                        {
+                            cookies[column, row] = other
+                            cookies[column, row + 1] = cookie
+                            
+                            // Is either cookie now part of a chain?
+                            if hasChainAt(column: column, row: row + 1) || hasChainAt(column: column, row: row)
+                            {
+                                set.insert(Swap(cookieA: cookie, cookieB: other))
+                            }
+                            
+                            // Swap them back
+                            cookies[column, row] = cookie
+                            cookies[column, row + 1] = other
+                        }
+                    }
+                }
+            }
+        }
+        
+        possibleSwaps = set
     }
 }
