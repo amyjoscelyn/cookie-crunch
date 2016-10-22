@@ -73,17 +73,26 @@ class GameViewController: UIViewController
     {
         view.isUserInteractionEnabled = false
         
-        level.performSwap(swap: swap)
-        
-        scene.animate(swap)
+        if level.isPossibleSwap(swap)
         {
-            self.view.isUserInteractionEnabled = true
+            level.performSwap(swap: swap)
+            scene.animate(swap)
+            {
+                self.view.isUserInteractionEnabled = true
+            }
+            /*
+             Note: The above uses so-called trailing closure syntax, where the closure is written behind the function call. An alternative way to write it is as follows:
+             scene.animate(swap, completion: {
+             self.view.isUserInteractionEnabled = true
+             })
+             */
         }
-        /*
-         Note: The above uses so-called trailing closure syntax, where the closure is written behind the function call. An alternative way to write it is as follows:
-         scene.animate(swap, completion: {
-         self.view.isUserInteractionEnabled = true
-         })
-         */
+        else
+        {
+            scene.animateInvalidSwap(swap)
+            {
+                self.view.isUserInteractionEnabled = true
+            }
+        }
     }
 }
