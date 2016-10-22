@@ -28,6 +28,7 @@
 		3DDDCF6C1DBA700D00D7700F /* Level_6.json in Resources */ = {isa = PBXBuildFile; fileRef = 3DDDCF6A1DBA700D00D7700F /* Level_6.json */; };
 		3DDDCF6D1DBA700D00D7700F /* Level_7.json in Resources */ = {isa = PBXBuildFile; fileRef = 3DDDCF6B1DBA700D00D7700F /* Level_7.json */; };
 		3DDDCF6F1DBA832C00D7700F /* Swap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDDCF6E1DBA832C00D7700F /* Swap.swift */; };
+		3DDDCF711DBBBC7300D7700F /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 3DDDCF701DBBBC7300D7700F /* Sounds */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		3DDDCF6A1DBA700D00D7700F /* Level_6.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_6.json; sourceTree = "<group>"; };
 		3DDDCF6B1DBA700D00D7700F /* Level_7.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_7.json; sourceTree = "<group>"; };
 		3DDDCF6E1DBA832C00D7700F /* Swap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swap.swift; sourceTree = "<group>"; };
+		3DDDCF701DBBBC7300D7700F /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				3DD35ED21DB924D9001FDC57 /* Cookie.swift */,
 				3DD35EDC1DB97593001FDC57 /* Tile.swift */,
 				3DDDCF6E1DBA832C00D7700F /* Swap.swift */,
+				3DDDCF701DBBBC7300D7700F /* Sounds */,
 				3DD35ED41DB93B9F001FDC57 /* Array2D.swift */,
 				3DD35ED61DB9432A001FDC57 /* Level.swift */,
 				3DD35EDE1DB97678001FDC57 /* Extensions.swift */,
@@ -172,6 +175,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DDDCF711DBBBC7300D7700F /* Sounds in Resources */,
 				3DD35ED11DB920F6001FDC57 /* Sprites.atlas in Resources */,
 				3DD35EFA1DB9B97C001FDC57 /* Level_4.json in Resources */,
 				3DD35EF81DB9B97C001FDC57 /* Level_2.json in Resources */,

@@ -5,6 +5,8 @@
 //  Created by Amy Joscelyn on 10/20/16.
 //  Copyright © 2016 Amy Joscelyn. All rights reserved.
 //
+//  Credits: Free game art from Game Art Guppy ( http://www.gameartguppy.com/ ). The music is by Kevin MacLeod ( http://incompetech.com/ ). The sound effects are based on samples from freesound.org ( http://freesound.org/ ).
+//
 
 import SpriteKit
 
@@ -25,6 +27,12 @@ class GameScene: SKScene
     private var swipeFromColumn: Int?
     private var swipeFromRow: Int?
     var selectionSprite = SKSpriteNode() //private?
+    
+    let swapSound = SKAction.playSoundFileNamed("Chomp.wav", waitForCompletion: false)
+    let invalidSwapSound = SKAction.playSoundFileNamed("Error.wav", waitForCompletion: false)
+    let matchSound = SKAction.playSoundFileNamed("Ka-Ching.wav", waitForCompletion: false)
+    let fallingCookieSound = SKAction.playSoundFileNamed("Scrape.wav", waitForCompletion: false)
+    let addCookieSound = SKAction.playSoundFileNamed("Drip.wav", waitForCompletion: false)
     
     required init?(coder aDecoder: NSCoder)
     {
@@ -218,6 +226,8 @@ class GameScene: SKScene
         let moveB = SKAction.move(to: spriteA.position, duration: duration)
         moveB.timingMode = .easeOut
         spriteB.run(moveB)
+        
+        run(swapSound)
     }
     
     func showSelectionIndicatorForCookie(cookie: Cookie)
@@ -264,5 +274,7 @@ class GameScene: SKScene
         
         spriteA.run(SKAction.sequence([moveA, moveB]), completion: completion)
         spriteB.run(SKAction.sequence([moveB, moveA]), completion: completion)
+        
+        run(invalidSwapSound)
     }
 }
