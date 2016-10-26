@@ -97,6 +97,11 @@ class GameViewController: UIViewController
     func handleMatches()
     {
         let chains = level.removeMatches()
+        if chains.count == 0
+        {
+            beginNextTurn()
+            return
+        }
         
         scene.animateMatchedCookies(for: chains)
         {
@@ -106,9 +111,15 @@ class GameViewController: UIViewController
                 let columns = self.level.topUpCookies()
                 self.scene.animateNewCookies(columns)
                 {
-                        self.view.isUserInteractionEnabled = true
+                    self.handleMatches() //this is recursion, if you don't return somewhere there will be an infinite loop
                 }
             }
         }
+    }
+    
+    func beginNextTurn()
+    {
+        level.detectPossibleSwaps()
+        view.isUserInteractionEnabled = true
     }
 }
