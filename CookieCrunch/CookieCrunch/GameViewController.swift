@@ -103,7 +103,11 @@ class GameViewController: UIViewController
             let columns = self.level.fillHoles()
             self.scene.animateFallingCookies(columns: columns)
             {
-                self.view.isUserInteractionEnabled = true
+                let columns = self.level.topUpCookies()
+                self.scene.animateNewCookies(columns)
+                {
+                        self.view.isUserInteractionEnabled = true
+                }
             }
         }
     }
