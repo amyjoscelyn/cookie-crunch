@@ -52,6 +52,7 @@ class GameScene: SKScene
         
         //the below adds empty SKNodes to the screen to act as layers – like transparent planes other nodes can be added to
         addChild(gameLayer)
+        gameLayer.isHidden = true
         
         //center is 0.5, 0.5 – so this makes cookie[0,0] on the bottom left of the screen, where the grid should start, by moving the grid down and to the left by half the height and width
         let layerPosition = CGPoint(
@@ -389,5 +390,26 @@ class GameScene: SKScene
         let moveAction = SKAction.move(by: CGVector(dx: 0, dy: 3), duration: 0.7)
         moveAction.timingMode = .easeOut
         scoreLabel.run(SKAction.sequence([moveAction, SKAction.removeFromParent()]))
+    }
+    
+    func animateGameOver(_ completion: @escaping () -> ())
+    {
+        let action = SKAction.move(by: CGVector(dx: 0, dy: -size.height), duration: 0.3)
+        action.timingMode = .easeIn
+        gameLayer.run(action, completion: completion)
+    }
+    
+    func animateBeginGame(_ completion: @escaping () -> ())
+    {
+        gameLayer.isHidden = false
+        gameLayer.position = CGPoint(x: 0, y: size.height)
+        let action = SKAction.move(by: CGVector(dx: 0, dy: -size.height), duration: 0.3)
+        action.timingMode = .easeOut
+        gameLayer.run(action, completion: completion)
+    }
+    
+    func removeAllCookieSprites()
+    {
+        cookiesLayer.removeAllChildren()
     }
 }
