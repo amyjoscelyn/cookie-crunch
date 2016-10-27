@@ -11,11 +11,13 @@ import Foundation
 class Chain: Hashable, CustomStringConvertible
 {
     var cookies = [Cookie]()
+    var score = 0
     
     enum ChainType: CustomStringConvertible
     {
         case horizontal
         case vertical
+        case lShape
 //        If you feel adventurous, you can also add more complex chain types, such as L- and T-shapes.
 //        There is a reason you’re using an array here to store the cookie objects and not a Set: It’s convenient to remember the order of the cookie objects so that you know which cookies are at the ends of the chain. This makes it easier to combine multiple chains into a single one to detect those L- or T-shapes.
         
@@ -24,6 +26,7 @@ class Chain: Hashable, CustomStringConvertible
             {
             case .horizontal: return "Horizontal"
             case .vertical: return "Vertical"
+            case .lShape: return "L-Shape"
             }
         }
     }

@@ -15,6 +15,10 @@ class Level
 {
     fileprivate var cookies = Array2D<Cookie>(columns: NumColumns, rows: NumRows)
     private var possibleSwaps = Set<Swap>()
+    
+    var targetScore = 0
+    var maximumMoves = 0
+    private var comboMultiplier = 0
 
     func cookieAt(column: Int, row: Int) -> Cookie?
     {
@@ -142,6 +146,9 @@ class Level
                 }
             }
         }
+        
+        targetScore = dictionary["targetScore"] as! Int
+        maximumMoves = dictionary["moves"] as! Int
     }
     
     func performSwap(swap: Swap)
@@ -286,6 +293,38 @@ class Level
         return set
     }
     
+    /*func detectLShapeMatches(horizontalChains: Set<Chain>, verticalChains: Set<Chain>) -> Set<Chain>
+    {
+        // An L-shape consists of two chains, one horizontal and one vertical, that share a corner cookie. You can loop through the set of horizontal chains and check if the chain’s first or last cookie is also present in any of the vertical chains. If so, remove those two chains and combine them into a new one, with a new ChainType.
+        
+        var set = Set<Chain>()
+        
+        for horzChain in horizontalChains
+        {
+            let firstCookie = horzChain.firstCookie()
+            let lastCookie = horzChain.lastCookie()
+            
+            for vertChain in verticalChains
+            {
+                if vertChain.cookies.contains(firstCookie) || vertChain.cookies.contains(lastCookie)
+                {
+                    let newChain = Chain(chainType: .lShape)
+                    
+                    let horzCookies = horzChain.cookies
+                    let vertCookies = vertChain.cookies
+                    
+                    newChain.cookies = horzCookies + vertCookies
+                    
+                    set.insert(newChain)
+                }
+            }
+            //combine chains into new l-shape chain, add to set
+            //remove vertchain, remove horzchain from parent sets
+            //return l-shape chains
+        }
+        return set
+    }*/
+    
     func removeMatches() -> Set<Chain>
     {
         let horizontalChains = detectHorizontalMatches()
@@ -293,6 +332,9 @@ class Level
         
         removeCookies(chains: horizontalChains)
         removeCookies(chains: verticalChains)
+        
+        calculateScores(for: horizontalChains)
+        calculateScores(for: verticalChains)
         
         return horizontalChains.union(verticalChains)
     }
@@ -375,5 +417,20 @@ class Level
             }
         }
         return columns
+    }
+    
+    private func calculateScores(for chains: Set<Chain>)
+    {
+        // 3-chain is 60 pts, 4-chain is 120, 5-chain is 180, and so on
+        for chain in chains
+        {
+            chain.score = 60 * (chain.length - 2) * comboMultiplier
+            comboMultiplier += 1
+        }
+    }
+    
+    func resetComboMultiplier()
+    {
+        comboMultiplier = 1
     }
 }
