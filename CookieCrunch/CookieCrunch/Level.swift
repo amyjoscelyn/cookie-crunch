@@ -10,6 +10,7 @@ import Foundation
 
 let NumColumns = 9
 let NumRows = 9
+let NumLevels = 7 // Excludes level 0 in count
 
 class Level
 {

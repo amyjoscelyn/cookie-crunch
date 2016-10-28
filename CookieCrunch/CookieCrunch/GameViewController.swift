@@ -17,6 +17,7 @@ class GameViewController: UIViewController
     var scene: GameScene!
     var level: Level!
     
+    var currentLevelNum = 0
     var movesLeft = 0
     var score = 0
     
@@ -69,6 +70,15 @@ class GameViewController: UIViewController
     {
         super.viewDidLoad()
         
+        // Set up view with level 1
+        setUpLevel(levelNum: currentLevelNum)
+        
+        // Start the background music
+        backgroundMusic?.play()
+    }
+    
+    func setUpLevel(levelNum: Int)
+    {
         // Configure the view
         let skView = view as! SKView
         skView.isMultipleTouchEnabled = false
@@ -77,25 +87,26 @@ class GameViewController: UIViewController
         scene = GameScene(size: skView.bounds.size)
         scene.scaleMode = .aspectFill
         
-        level = Level(filename: "Level_1")
+        // Set up the level
+        level = Level(filename: "Level_\(levelNum)")
         scene.level = level
-        scene.addTiles()
         
+        scene.addTiles()
         scene.swipeHandler = handleSwipe
+        
+        gameOverPanel.isHidden = true
+        shuffleButton.isHidden = true
         
         // Present the scene
         skView.presentScene(scene)
         
         //FOR TESTING PURPOSES=========
-//        skView.showsPhysics = true
-        skView.showsFPS = true
-        skView.showsNodeCount = true
+        //        skView.showsPhysics = true
+//        skView.showsFPS = true
+//        skView.showsNodeCount = true
         //=============================
         
-        gameOverPanel.isHidden = true
-        shuffleButton.isHidden = true
-        
-        backgroundMusic?.play()
+        // Start the game
         beginGame()
     }
     
@@ -198,6 +209,7 @@ class GameViewController: UIViewController
         if score >= level.targetScore
         {
             gameOverPanel.image = UIImage(named: "LevelComplete")
+            currentLevelNum = currentLevelNum < NumLevels ? currentLevelNum+1 : 0
             showGameOver()
         }
         else if movesLeft == 0
@@ -227,6 +239,6 @@ class GameViewController: UIViewController
         gameOverPanel.isHidden = true
         scene.isUserInteractionEnabled = true
         
-        beginGame()
+        setUpLevel(levelNum: currentLevelNum)
     }
 }
