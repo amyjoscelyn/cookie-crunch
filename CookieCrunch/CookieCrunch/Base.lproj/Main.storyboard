@@ -82,14 +82,29 @@
                                     <constraint firstAttribute="height" constant="225" id="fkT-b2-wEL"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H7R-4D-2hE">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="BPb-ZJ-Aca"/>
+                                    <constraint firstAttribute="width" constant="100" id="pVd-Uc-pRB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="20"/>
+                                <state key="normal" title="Shuffle" backgroundImage="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="shuffleButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="UV9-pV-dnu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="H7R-4D-2hE" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="3k9-ab-TwM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2N3-8I-Ycf" secondAttribute="trailing" constant="8" id="BKy-Y5-Xy3"/>
                             <constraint firstItem="2N3-8I-Ycf" firstAttribute="top" secondItem="8aa-yV-Osq" secondAttribute="bottom" constant="20" id="JkO-Ua-R1a"/>
                             <constraint firstItem="s5D-6N-zSn" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" id="MlH-82-qnB"/>
                             <constraint firstItem="2N3-8I-Ycf" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leadingMargin" constant="8" id="RN9-Sv-xU6"/>
                             <constraint firstAttribute="trailing" secondItem="s5D-6N-zSn" secondAttribute="trailing" id="XDE-eP-qwo"/>
+                            <constraint firstItem="qHh-Mt-9TT" firstAttribute="top" secondItem="H7R-4D-2hE" secondAttribute="bottom" constant="20" id="pRh-Zk-7cR"/>
                             <constraint firstItem="s5D-6N-zSn" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" id="w4N-4i-gov"/>
                         </constraints>
                     </view>
@@ -97,6 +112,7 @@
                         <outlet property="gameOverPanel" destination="s5D-6N-zSn" id="8c6-cF-idp"/>
                         <outlet property="movesLabel" destination="UXu-LK-BMD" id="jtJ-AG-EW9"/>
                         <outlet property="scoreLabel" destination="4Et-Ul-EzD" id="tHE-HP-LIq"/>
+                        <outlet property="shuffleButton" destination="H7R-4D-2hE" id="PTf-Yo-EZm"/>
                         <outlet property="targetLabel" destination="CQx-CL-ET7" id="KIs-et-WdF"/>
                     </connections>
                 </viewController>
@@ -104,4 +120,7 @@
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="Button" width="150" height="54"/>
+    </resources>
 </document>
