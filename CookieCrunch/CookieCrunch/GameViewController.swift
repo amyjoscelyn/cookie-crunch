@@ -8,6 +8,7 @@
 
 import UIKit
 import SpriteKit
+import AVFoundation
 
 class GameViewController: UIViewController
 {
@@ -18,6 +19,25 @@ class GameViewController: UIViewController
     
     var movesLeft = 0
     var score = 0
+    
+    // below is common pattern for declaring a variable and initializing it in the same statement.  Initialization sits in closure
+    // lazy means the code in the closure won't run until backgroundMusic is first accessed
+    lazy var backgroundMusic: AVAudioPlayer? = {
+        guard let url = Bundle.main.url(forResource: "Mining by Moonlight", withExtension: "mp3") else
+        {
+            return nil
+        }
+        do
+        {
+            let player = try AVAudioPlayer(contentsOf: url)
+            player.numberOfLoops = -1
+            return player
+        }
+        catch
+        {
+            return nil
+        }
+    }()
     
     @IBOutlet weak var targetLabel: UILabel!
     @IBOutlet weak var movesLabel: UILabel!
@@ -75,6 +95,7 @@ class GameViewController: UIViewController
         gameOverPanel.isHidden = true
         shuffleButton.isHidden = true
         
+        backgroundMusic?.play()
         beginGame()
     }
     
