@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3DAB7A8B1DC3F01200154980 /* Grid.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3DAB7A8A1DC3F01200154980 /* Grid.atlas */; };
 		3DD35EB91DB920C5001FDC57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD35EB81DB920C5001FDC57 /* AppDelegate.swift */; };
 		3DD35EBF1DB920C5001FDC57 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD35EBE1DB920C5001FDC57 /* GameScene.swift */; };
 		3DD35EC11DB920C5001FDC57 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD35EC01DB920C5001FDC57 /* GameViewController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3DAB7A8A1DC3F01200154980 /* Grid.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Grid.atlas; sourceTree = "<group>"; };
 		3DD35EB51DB920C5001FDC57 /* CookieCrunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookieCrunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DD35EB81DB920C5001FDC57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DD35EBE1DB920C5001FDC57 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				3DD35EDE1DB97678001FDC57 /* Extensions.swift */,
 				3DD35EC21DB920C5001FDC57 /* Main.storyboard */,
 				3DD35EC51DB920C5001FDC57 /* Assets.xcassets */,
+				3DAB7A8A1DC3F01200154980 /* Grid.atlas */,
 				3DDDCF741DBBBFF800D7700F /* Levels */,
 				3DDDCF751DBBC01E00D7700F /* SFX */,
 				3DD35ED01DB920F6001FDC57 /* Sprites.atlas */,
@@ -218,6 +221,7 @@
 				3DD35EC41DB920C5001FDC57 /* Main.storyboard in Resources */,
 				3DDDCF8C1DBBC04C00D7700F /* Mining by Moonlight.mp3 in Resources */,
 				3DD35EC61DB920C5001FDC57 /* Assets.xcassets in Resources */,
+				3DAB7A8B1DC3F01200154980 /* Grid.atlas in Resources */,
 				3DDDCF691DBA6F4C00D7700F /* Level_5.json in Resources */,
 				3DDDCF8A1DBBC04C00D7700F /* Error.wav in Resources */,
 				3DDDCF8B1DBBC04C00D7700F /* Ka-Ching.wav in Resources */,

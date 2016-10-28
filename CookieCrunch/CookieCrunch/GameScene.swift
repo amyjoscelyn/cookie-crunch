@@ -23,6 +23,8 @@ class GameScene: SKScene
     let gameLayer = SKNode() //base layer
     let cookiesLayer = SKNode() //cookie sprites go here
     let tilesLayer = SKNode()
+    let cropLayer = SKCropNode() // A crop node only draws its children where the mask contains pixels. This lets you draw the cookies only where there is a tile, but never on the background.
+    let maskLayer = SKNode()
     
     private var swipeFromColumn: Int?
     private var swipeFromRow: Int?
@@ -62,8 +64,15 @@ class GameScene: SKScene
         tilesLayer.position = layerPosition
         gameLayer.addChild(tilesLayer)
         
+        gameLayer.addChild(cropLayer)
+        
+        maskLayer.position = layerPosition
+        cropLayer.maskNode = maskLayer
+        
         cookiesLayer.position = layerPosition
-        gameLayer.addChild(cookiesLayer)
+        cropLayer.addChild(cookiesLayer)
+        
+//        cropLayer.addChild(maskLayer) //this is super interesting!  it masks the cookie sprites, but when you swap cookies, the sprites' zPositions update to the forefront.  This would make a kind of mystery match-3 game, if you don't actually know where the matches are...
         
         swipeFromColumn = nil
         swipeFromRow = nil
@@ -128,9 +137,43 @@ class GameScene: SKScene
             {
                 if level.tileAt(column: column, row: row) != nil
                 {
-                    let tileNode = SKSpriteNode(imageNamed: "Tile")
+                    let tileNode = SKSpriteNode(imageNamed: "MaskTile")
                     tileNode.size = CGSize.init(width: TileWidth, height: TileHeight)
                     tileNode.position = pointFor(column: column, row: row)
+                    maskLayer.addChild(tileNode)
+                }
+            }
+        }
+        
+        for row in 0...NumRows
+        {
+            for column in 0...NumColumns
+            {
+                let topLeft = (column > 0) && (row < NumRows)
+                    && level.tileAt(column: column - 1, row: row) != nil
+                let bottomLeft = (column > 0) && (row > 0)
+                    && level.tileAt(column: column - 1, row: row - 1) != nil
+                let topRight = (column < NumColumns) && (row < NumRows)
+                    && level.tileAt(column: column, row: row) != nil
+                let bottomRight = (column < NumColumns) && (row > 0)
+                    && level.tileAt(column: column, row: row - 1) != nil
+                
+                // The tiles are named from 0 to 15, according to the bitmask that is made by combining these four values
+                let value = Int(topLeft.hashValue) |
+                            Int(topRight.hashValue) << 1 |
+                            Int(bottomLeft.hashValue) << 2 |
+                            Int(bottomRight.hashValue) << 3
+                
+                // Values 0 (no tiles), 6 and 9 (two opposite tiles) are not drawn.
+                if value != 0 && value != 6 && value != 9
+                {
+                    let name = String(format: "Tile_%ld", value)
+                    let tileNode = SKSpriteNode(imageNamed: name)
+                    tileNode.size = CGSize.init(width: TileWidth, height: TileHeight)
+                    var point = pointFor(column: column, row: row)
+                    point.x -= TileWidth / 2
+                    point.y -= TileHeight / 2
+                    tileNode.position = point
                     tilesLayer.addChild(tileNode)
                 }
             }
